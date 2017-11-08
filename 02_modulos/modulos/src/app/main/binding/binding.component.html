@@ -1,0 +1,17 @@
+<article class="row align-items-center">
+
+  <div class="col-6">
+    <label>Dime tu nombre</label>
+    <input type="text" [(ngModel)]="sNombre">
+    <input type="checkbox" [(ngModel)]="isSpanish">
+    <button (click)="btnBorrar()">Borrar</button>
+  </div>
+  <div class="col-6">
+    <p>Hola {{sNombre.toUpperCase()}}</p>
+  </div>
+  <div class="col-6">
+    <h2>Expresiones</h2>
+    <p>El producto * 4 es: {{nNumber * 4}}</p>
+    <p>{{isSpanish ?'Gracias':'Thanks'}}</p>
+  </div>
+</article>
