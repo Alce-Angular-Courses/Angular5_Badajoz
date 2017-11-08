@@ -12,7 +12,7 @@ export class CabezaComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.sTitulo = 'Directivas Angular';
+    this.sTitulo = 'Formularios Angular';
   }
 
 }

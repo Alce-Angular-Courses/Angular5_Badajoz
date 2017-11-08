@@ -1,5 +1,5 @@
 export class DepartamentoModel {
 
-    constructor(public idProvincia: number, public nombre: string) {
+    constructor(public idDpto: number, public nombre: string) {
         }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserModel } from './../../models/usuario';
+import { DepartamentoModel } from './../../models/departaments';
 import { Printer, PrinterModel} from '../../models/printers';
  
 @Component({
@@ -9,6 +11,12 @@ import { Printer, PrinterModel} from '../../models/printers';
 export class FormComponent implements OnInit {
 
   aPrinters : Array<Printer>;
+  impresoraSeleccionada: Printer;
+  isColor: boolean;
+  isClaro: boolean;
+  aDepartamentos: Array<DepartamentoModel>;
+  departamentoSeleccionado: DepartamentoModel;
+  user: UserModel
 
   constructor() { }
 
@@ -18,6 +26,15 @@ export class FormComponent implements OnInit {
       new PrinterModel (2, 'Brother', 'laser'),
       {id: 2, modelo: 'Xerox', tipo: 'laser'}
     ]
-  }
+    this.aDepartamentos = [
+      new DepartamentoModel(1, 'Ventas'),
+      new DepartamentoModel(2, 'Marketing'),
+      new DepartamentoModel(3, 'Mantenimiento'),
+      new DepartamentoModel(4, 'Dirección'),
+      new DepartamentoModel(5, 'Sistemas'),
+    ]
+
+    this.user = new UserModel ('', '', '', '');
+  } // Fin de onInit
 
 }
