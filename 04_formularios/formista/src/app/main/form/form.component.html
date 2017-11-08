@@ -1,29 +1,59 @@
 <article>
-    <form>
+    <form novalidate #formulario="ngForm" (ngSubmit)="enviar()">
         <!--Text-->    
         <legend>Usuario</legend>
         <p>
             <!--Etiqueta / Campo "Mombre"-->						
-            <label for="firstname">Nombre</label>
-            <input type="text" name="name" id="firstname"
-            placeholder="Indica tu nombre" [(ngModel)]="user.nombre">
+            <label for="name">Nombre</label>
+            <input type="text" name="name" id="name" #nameState="ngModel"
+            placeholder="Indica tu nombre" required minlength="4"
+            [(ngModel)]="user.nombre">
         </p>
+
+           <!--Mensajes de validación-->
+        <div [hidden]="nameState.valid || nameState.untouched ">
+            <div class="error-message" 
+              [hidden]="!nameState.errors?.required">
+              El nombre es obligatorio</div>
+            <div class="error-message" 
+              [hidden] = "!nameState.errors?.minlength">
+              El nombre debe tener un mínimo de 4 caracteres
+            </div>
+          </div>
+      
 
         <p>
             <!--Etiqueta / Campo "Apellidos"-->
             <label for="lastname">Apellidos</label>
             <input type="text" id="lastname" name="lastname"
-            placeholder="Indica tu apellido"
+            #apellidoState = "ngModel"
+            placeholder="Indica tu apellido" required
                 [(ngModel)]="user.apellidos">
         </p>
 
+        <div [hidden]="apellidoState.valid || apellidoState.untouched "
+                class="error-message">
+            <p>El apellido es obligatorio</p>
+        </div>
         <p>
             <!--Etiqueta / Campo "Telefono"-->
             <label for="phoneNumber">Teléfono</label>
             <input type="text" id="phoneNumber" name="phoneNumber" 
-            placeholder="Telefono"
+            #phoneState = "ngModel"
+            placeholder="Telefono" required pattern="^\d{9}$"
                 [(ngModel)]="user.telefono"> 
-        </p>	
+        </p>
+        
+        <!--Mensajes de validación-->
+        <div [hidden]="phoneState.valid || phoneState.untouched ">
+            <div class="error-message" 
+                [hidden]="!phoneState.errors?.required">
+                El teléfono es obligatorio</div>
+            <div class="error-message" 
+                [hidden] = "!phoneState.errors?.patern">
+                El teléfono debe tener 9 digitos
+            </div>
+        </div>
 
         <!--Radio-Buttos-->
         <legend>Selecciona una Impresora</legend>
@@ -57,19 +87,34 @@
                 </option>
             </select>
         </p>	
-        <button type="submit">Enviar</button>
+        <p>
+            <button type="submit" 
+                [disabled]="!formulario.valid">Enviar</button>
+            <button type="button" (click)="borrar()"
+                [disabled]="formulario.pristine">Borrar</button>
+        </p>
+        
     </form>
 
-<!--     <div *ngIf="mostrarFinal"></div>
-
--->        <legend>Resultado</legend>
+     <div *ngIf="mostrarFinal">
+        <legend>Resultado</legend>
         <ul>
             <li>Usuario: {{user | json}}</li>
             <li>Impresora seleccionada: {{impresoraSeleccionada | json}}</li>
             <li>Opción color seleccionada: {{isColor}}</li>
             <li>Opción claro seleccionada: {{isClaro}}</li>
             <li>Departamento elegida: {{departamentoSeleccionado | json}}</li>
-        </ul>    
+        </ul> 
+     </div>
+     <div>
+        <legend>Validación</legend> 
+        <ul>
+            <li>Validez: {{formulario.valid}}</li>
+            <li>Untouched: {{formulario.untouched}}</li>
+            <li>Pristine : {{formulario.pristine}}</li>
+        </ul>
+     </div>
+
     	 
 </article>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { UserModel } from './../../models/usuario';
 import { DepartamentoModel } from './../../models/departaments';
 import { Printer, PrinterModel} from '../../models/printers';
@@ -16,7 +16,9 @@ export class FormComponent implements OnInit {
   isClaro: boolean;
   aDepartamentos: Array<DepartamentoModel>;
   departamentoSeleccionado: DepartamentoModel;
-  user: UserModel
+  user: UserModel;
+  @ViewChild('formulario') formulario: any;
+  mostrarFinal: boolean;
 
   constructor() { }
 
@@ -35,6 +37,15 @@ export class FormComponent implements OnInit {
     ]
 
     this.user = new UserModel ('', '', '', '');
+    console.log(this.formulario)
   } // Fin de onInit
+
+  enviar() {
+    this.mostrarFinal= true;
+  }
+
+  borrar() {
+    this.formulario.reset();
+  }
 
 }
