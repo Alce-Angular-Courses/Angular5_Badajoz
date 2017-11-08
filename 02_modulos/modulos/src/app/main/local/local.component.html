@@ -1,0 +1,12 @@
+<article class="row align-items-center">
+    <h2>Referencias locales</h2>
+      <div class="col-6">
+        <label>Dime tu nombre</label>
+        <input type="text" #nombre>
+        <button (click)="nombre.value = ''">Borrar</button>
+      </div>
+      <div class="col-6">
+        <p>Hola {{nombre.value}}</p>
+      </div>
+
+    </article>
