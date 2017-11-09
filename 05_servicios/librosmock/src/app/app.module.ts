@@ -1,6 +1,7 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { MainModule } from './main/main.module';
 import { ServicesModule } from './services/services.module';
@@ -15,6 +16,7 @@ import { LibrosService } from './services/libros.service';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     MainModule,
     SharedModule,
     ServicesModule

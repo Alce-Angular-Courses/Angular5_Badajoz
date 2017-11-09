@@ -19,13 +19,26 @@ export class ListaGoogleComponent implements OnInit {
     this.aLibros = [];
   }
 
-  buscar() {
+  buscarPromesa() {
 
       this.http.get(this.sURL+this.sClave).toPromise()
+      .then(
+        (response)=>{
+          const aDatos = response.json().items;
+          aDatos.forEach(element => {
+            this.aLibros.push(element.volumeInfo.title)
+          });
+          console.log(aDatos)
+        }, // Función en caso de acierto
+        (error)=>{
+          console.log(error);
+        }, // Función en caso de error
+      )
+  }
 
-      
-      // librosService.buscarLibros(this.sClave);
-   
+  buscarReactive() {
+    
+          this.http.get(this.sURL+this.sClave)
   }
 
 }

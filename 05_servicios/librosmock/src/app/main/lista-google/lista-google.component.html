@@ -6,10 +6,11 @@
     [(ngModel)]="sClave">
   </p>
   <p>
-    <button (click)="buscar()">Buscar</button>
+    <button (click)="buscarPromesa()">Buscar (Promesas)</button>
+    <button (click)="buscarReactive()">Buscar (Reactive)</button>
   </p>
   <div *ngIf="aLibros.length">
-    <h2>Lista de ideas</h2>
+    <h2>Lista de libros</h2>
     <ul>
       <li *ngFor="let libro of aLibros">{{libro}}</li>
     </ul>
