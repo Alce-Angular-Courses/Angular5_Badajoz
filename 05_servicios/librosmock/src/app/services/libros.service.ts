@@ -18,4 +18,15 @@ export class LibrosService {
     return this.aLibros;
   }
 
+  buscarLibrosAsync(clave: string) {
+     return new Promise(
+       // function (resolve, reject) {}
+       (resolve, reject) =>{
+        setInterval(
+          resolve(JSON.stringify(this.aLibros)
+             ), 1000
+        )
+       }
+     )
+  }
 }

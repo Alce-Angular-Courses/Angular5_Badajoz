@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ListaComponent } from './lista/lista.component';
-
-
+import { ListaAsyncComponent } from './lista-async/lista-async.component';
 
 @NgModule({
   imports: [
@@ -11,9 +10,11 @@ import { ListaComponent } from './lista/lista.component';
     FormsModule
   ],
   declarations: [
-    ListaComponent
+    ListaComponent,
+    ListaAsyncComponent
     ],
   exports : [
-    ListaComponent],
+    ListaComponent,
+    ListaAsyncComponent],
 })
 export class MainModule { }
