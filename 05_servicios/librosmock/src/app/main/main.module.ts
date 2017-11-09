@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ListaComponent } from './lista/lista.component';
 import { ListaAsyncComponent } from './lista-async/lista-async.component';
 import { ListaGoogleComponent } from './lista-google/lista-google.component';
+import { ListaSrvhttpComponent } from './lista-srvhttp/lista-srvhttp.component';
 
 @NgModule({
   imports: [
@@ -13,11 +14,13 @@ import { ListaGoogleComponent } from './lista-google/lista-google.component';
   declarations: [
     ListaComponent,
     ListaAsyncComponent,
-    ListaGoogleComponent
+    ListaGoogleComponent,
+    ListaSrvhttpComponent
     ],
   exports : [
     ListaComponent,
     ListaAsyncComponent,
-    ListaGoogleComponent],
+    ListaGoogleComponent,
+    ListaSrvhttpComponent],
 })
 export class MainModule { }

@@ -20,25 +20,35 @@ export class ListaGoogleComponent implements OnInit {
   }
 
   buscarPromesa() {
-
-      this.http.get(this.sURL+this.sClave).toPromise()
-      .then(
-        (response)=>{
-          const aDatos = response.json().items;
-          aDatos.forEach(element => {
-            this.aLibros.push(element.volumeInfo.title)
-          });
-          console.log(aDatos)
-        }, // Función en caso de acierto
-        (error)=>{
-          console.log(error);
-        }, // Función en caso de error
-      )
+    this.http.get(this.sURL+this.sClave).toPromise()
+    .then(
+      (response)=>{
+        const aDatos = response.json().items;
+        aDatos.forEach(element => {
+          this.aLibros.push(element.volumeInfo.title)
+        });
+        console.log(aDatos)
+      }, // Función en caso de acierto
+      (error)=>{
+        console.log(error);
+      }, // Función en caso de error
+    )
   }
 
   buscarReactive() {
-    
-          this.http.get(this.sURL+this.sClave)
+    this.http.get(this.sURL+this.sClave)
+    .subscribe(
+      (response)=>{
+        const aDatos = response.json().items;
+        aDatos.forEach(element => {
+          this.aLibros.push(element.volumeInfo.title)
+        });
+        console.log(aDatos)
+      }, // Función en caso de acierto
+      (error)=>{
+        console.log(error);
+      }, // Función en caso de error
+    )
   }
 
 }
